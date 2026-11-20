@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prefect Attendance</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Class Attendance</h1>
+      <p>Mark each student present or absent, add a note, then submit the register.</p>
+      <div class="meta">
+        <label>Class <input type="text" id="className" value="Form 2 East" /></label>
+        <label>Date <input type="date" id="date" /></label>
+        <label>Prefect <input type="text" id="prefect" placeholder="Your name" /></label>
+      </div>
+    </header>
+
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label for="search" class="sr-only">Search students</label>
+      <input type="search" id="search" placeholder="Search students..." autocomplete="off" />
+    </div>
+
+    <div class="toolbar">
+      <div class="stats" aria-live="polite">
+        <span class="pill" id="statTotal"></span>
+        <span class="pill g" id="statPresent"></span>
+        <span class="pill r" id="statAbsent"></span>
+        <span class="pill" id="statUnmarked"></span>
+      </div>
+      <div class="actions">
+        <button class="btn" id="allPresent" type="button">Mark all present</button>
+        <button class="btn" id="reset" type="button">Clear</button>
+      </div>
+    </div>
+
+    <section class="card" aria-labelledby="listTitle">
+      <div class="card-head">
+        <span class="title" id="listTitle">List of students in class</span>
+        <span class="col">Yes (present)</span>
+        <span class="col">No (absent)</span>
+      </div>
+      <ul class="student-list" id="list"></ul>
+    </section>
+    <link rel="stylesheet" href="style.css" />
+
+    <form class="add" id="addForm">
+      <label for="newName" class="sr-only">New student name</label>
+      <input type="text" id="newName" placeholder="Add a student..." autocomplete="off" />
+      <button class="btn" type="submit">Add</button>
+    </form>
+
+    <div class="note">
+      <label for="note">Prefect&apos;s note</label>
+      <textarea id="note" placeholder="e.g. Shem arrived late, John excused for sports..."></textarea>
+    </div>
+
+    <button class="btn primary" id="submit" type="button">Submit attendance</button>
+
+    <section class="summary" id="summary" aria-live="polite">
+      <h2>Attendance submitted</h2>
+      <div id="summaryText"></div>
+      <pre id="summaryPre"></pre>
+      <button class="btn" id="copy" type="button">Copy report</button>
+    </section>
+  </main>
+<link rel="stylesheet" href="style.css" />
+  <script src="./script.js"></script>
+  <link
+</body>
+</html>
+
