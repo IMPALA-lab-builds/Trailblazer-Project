@@ -1,0 +1,359 @@
+/* ===== Colour tokens ===== */
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --ink: #1c2430;
+  --muted: #5d6877;
+  --line: #e3e6eb;
+  --blue: #1f5fbf;
+  --green: #1f8a4c;
+  --green-bg: #e7f5ec;
+  --red: #c23a3a;
+  --red-bg: #fbeaea;
+  --amber: #c26a00;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Geist", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  padding: 20px 14px 32px;
+}
+
+/* ===== Layout ===== */
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+header p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.meta label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 160px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ===== Form fields ===== */
+input[type="text"],
+input[type="search"],
+input[type="date"],
+textarea {
+  font: inherit;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: var(--card);
+  width: 100%;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* ===== Search ===== */
+.search {
+  position: relative;
+}
+
+.search input {
+  padding-left: 36px;
+}
+
+.search svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+}
+
+/* ===== Student list card ===== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-head,
+.student-list li {
+  display: grid;
+  grid-template-columns: 1fr 88px 88px;
+  align-items: center;
+  padding: 10px 16px;
+}
+
+.card-head {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  background: #fbfbfc;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.card-head .title {
+  color: var(--amber);
+}
+
+.card-head .col {
+  text-align: center;
+  color: var(--muted);
+}
+
+.student-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.student-list li {
+  border-bottom: 1px solid var(--line);
+}
+
+.student-list li:last-child {
+  border-bottom: none;
+}
+
+.student-list li.empty {
+  display: block;
+  padding: 24px 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.name span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  background: #e9eef7;
+  color: var(--blue);
+}
+
+.remove {
+  margin-left: auto;
+  padding: 4px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.remove:hover {
+  opacity: 1;
+  color: var(--red);
+}
+
+/* ===== Present / absent boxes ===== */
+.mark {
+  justify-self: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  color: transparent;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.mark.yes:hover { border-color: var(--green); }
+.mark.no:hover { border-color: var(--red); }
+
+.mark.yes[aria-pressed="true"] {
+  background: var(--green-bg);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.mark.no[aria-pressed="true"] {
+  background: var(--red-bg);
+  border-color: var(--red);
+  color: var(--red);
+}
+
+/* ===== Toolbar & stats ===== */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stats,
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stats {
+  font-size: 13px;
+}
+
+.pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+
+.pill.g { color: var(--green); }
+.pill.r { color: var(--red); }
+
+/* ===== Buttons ===== */
+.btn {
+  font: inherit;
+  font-size: 14px;
+  padding: 9px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
+/* ===== Add student ===== */
+.add {
+  display: flex;
+  gap: 8px;
+}
+
+.add input {
+  flex: 1;
+}
+
+/* ===== Prefect's note ===== */
+.note label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+/* ===== Summary report ===== */
+.summary {
+  display: none;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.summary.show {
+  display: block;
+}
+
+.summary h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.summary pre {
+  margin: 8px 0 10px;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--bg);
+  white-space: pre-wrap;
+  font-family: "Geist Mono", monospace;
+  font-size: 12px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ===== Small screens ===== */
+@media (max-width: 480px) {
+  .card-head,
+  .student-list li {
+    grid-template-columns: 1fr 60px 60px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .avatar {
+    display: none;
+  }
+}
